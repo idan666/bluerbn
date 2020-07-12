@@ -9,7 +9,6 @@ const styles = theme => ({
   heading: {
     color: '#fff',
     textAlign: 'center',
-    marginBottom: theme.margin * 2,
   },
   logo: {
     width: 250,
@@ -21,10 +20,10 @@ const styles = theme => ({
 const WelcomeMessage = ({ classes }) => {
   return (
     <Fragment>
-      <Typography variant="display1" gutterBottom className={classes.heading}>
-        Welcome To
-      </Typography>
       <img src="/images/logo.png" alt="app logo" className={classes.logo} />
+      <Typography variant="display1" gutterBottom className={classes.heading}>
+        Flight Checker Login
+      </Typography>
     </Fragment>
   );
 };

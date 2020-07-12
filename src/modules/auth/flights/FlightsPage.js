@@ -1,38 +1,14 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Grid, Paper } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+
 import Flights from './FlightTable';
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles(theme => ({
+const styles = {
   root: {
     display: 'flex',
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
-  },
-  toolbarIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
   },
   menuButton: {
     marginRight: 36,
@@ -43,38 +19,12 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
-  drawerPaper: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerPaperClose: {
-    overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9),
-    },
-  },
-  appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     height: '100vh',
     overflow: 'auto',
   },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
   paper: {
-    padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
@@ -82,27 +32,25 @@ const useStyles = makeStyles(theme => ({
   fixedHeight: {
     height: 240,
   },
-}));
+};
 
-const FlightsList = props => {
-  const classes = useStyles();
-
+const FlightsList = () => {
   return (
-    <div className={classes.root}>
-      <AppBar position="absolute" className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+    <div className={styles.root}>
+      <AppBar position="absolute" className={styles.appBar}>
+        <Toolbar className={styles.toolbar}>
+          <Typography component="h1" variant="h6" color="inherit" noWrap className={styles.title}>
             Flights
           </Typography>
         </Toolbar>
       </AppBar>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
+      <main className={styles.content}>
+        <div className={styles.appBarSpacer} />
         {/* <Container maxWidth="lg" className={classes.container}> */}
         <Grid container spacing={3}>
           {/* Recent Orders */}
           <Grid item xs={12}>
-            <Paper className={classes.paper}>
+            <Paper className={styles.paper}>
               <Flights />
             </Paper>
           </Grid>

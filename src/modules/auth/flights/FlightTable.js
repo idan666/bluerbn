@@ -32,7 +32,7 @@ const rows = [
   },
 ];
 
-export default function Flights() {
+const Flights = () => {
   return (
     <React.Fragment>
       <Table size="small">
@@ -59,4 +59,6 @@ export default function Flights() {
       </Table>
     </React.Fragment>
   );
-}
+};
+
+export default Flights();
