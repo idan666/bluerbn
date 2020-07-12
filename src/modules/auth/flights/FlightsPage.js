@@ -34,7 +34,7 @@ const styles = {
   },
 };
 
-const FlightsList = () => {
+const FlightsList = props => {
   return (
     <div className={styles.root}>
       <AppBar position="absolute" className={styles.appBar}>
@@ -46,7 +46,6 @@ const FlightsList = () => {
       </AppBar>
       <main className={styles.content}>
         <div className={styles.appBarSpacer} />
-        {/* <Container maxWidth="lg" className={classes.container}> */}
         <Grid container spacing={3}>
           {/* Recent Orders */}
           <Grid item xs={12}>
@@ -55,7 +54,6 @@ const FlightsList = () => {
             </Paper>
           </Grid>
         </Grid>
-        {/* </Container> */}
       </main>
     </div>
   );

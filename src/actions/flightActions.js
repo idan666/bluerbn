@@ -1,9 +1,35 @@
 import * as actionTypes from './actionTypes';
-import AuthenticationAPI from '../api/AuthenticationAPI';
 
-const setFlights = payload => ({
+const flights = [
+  {
+    id: 1,
+    from: 'Israel',
+    to: 'Cyprus',
+    departureTime: 'now',
+    landingTime: 'In 2 hours',
+    price: '12$',
+  },
+  {
+    id: 2,
+    from: 'Israel',
+    to: 'Cyprus',
+    departureTime: 'now',
+    landingTime: 'In 2 hours',
+    price: '12$',
+  },
+  {
+    id: 3,
+    from: 'Israel',
+    to: 'Cyprus',
+    departureTime: 'now',
+    landingTime: 'In 2 hours',
+    price: '12$',
+  },
+];
+
+const setFlights = () => ({
   type: actionTypes.SET_FLIGHTS,
-  payload,
+  payload: flights,
 });
 
 const setFilteredFlights = payload => ({
@@ -17,23 +43,29 @@ export const clearFlights = () => ({
 });
 
 export function getFlightList() {
-  return async dispatch => {
-    try {
-      const list = await AuthenticationAPI.onGetBookingList();
-      dispatch(setFlights(list));
-      return list;
-    } catch (error) {
-      return error;
-    }
-  };
+  return flights;
+  // return dispatch => {
+  //   try {
+  //     const list = flights;
+  //     dispatch(setFlights(list));
+  //     return list;
+  //   } catch (error) {
+  //     return error;
+  //   }
+  // };
 }
 
-export function getFilteredFlightList() {
-  return async dispatch => {
+export function getFilteredFlightList(filter) {
+  return dispatch => {
     try {
-      const list = await AuthenticationAPI.onGetBookingList();
-      dispatch(setFilteredFlights(list));
-      return list;
+      const filtered = [];
+      for (let i = 0; i < flights.length; i++) {
+        if (flights[i].to.contains(filter)) {
+          filtered.push(flights[i]);
+        }
+      }
+      dispatch(setFilteredFlights(filtered));
+      return filtered;
     } catch (error) {
       return error;
     }
