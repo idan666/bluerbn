@@ -29,7 +29,7 @@ const Flights = props => {
         placeholder="Search flights here..."
         label="Destination"
         variant="outlined"
-        value={searchText}
+        // value={searchText}
         onChange={newValue => getFilteredFlights(newValue)}
       />
 
